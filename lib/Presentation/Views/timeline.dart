@@ -37,7 +37,7 @@ class specificevent extends StatelessWidget {
                 child: new Container(
                   padding: EdgeInsets.all(1),
                   decoration: new BoxDecoration(
-                    color: Constants.kRedColor,
+                    color: Constants.kBlueColor,
                     borderRadius: BorderRadius.circular(6),
                   ),
                   constraints: BoxConstraints(

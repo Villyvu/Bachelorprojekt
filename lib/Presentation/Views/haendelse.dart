@@ -11,6 +11,13 @@ class Haendelse extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('X. Akutforløb'),
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios,
+                size: 25,
+                color: Constants.kWhiteColor,
+              ),
+              onPressed: () => Navigator.pop(context, false)),
         ),
         body: Center(
           child: TimeLine(),
@@ -92,7 +99,7 @@ class _TimeLineState extends State<TimeLine> {
                         color: Colors.white,
                         border: Border(
                             top: BorderSide(
-                                width: 4, color: Constants.kBlueColor)),
+                                width: 4, color: Constants.kRedColor)),
                         boxShadow: [
                           BoxShadow(blurRadius: 10, color: Colors.black26)
                         ]),
