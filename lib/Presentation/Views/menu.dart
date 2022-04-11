@@ -77,7 +77,7 @@ class menu extends StatelessWidget {
                 const ListTile(
                   title: Text("Mine aftaler"),
                   textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.calendar_month_outlined,
+                  leading: Icon(Icons.calendar_view_month_outlined,
                       color: Constants.kWhiteColor),
                 ),
                 const ListTile(

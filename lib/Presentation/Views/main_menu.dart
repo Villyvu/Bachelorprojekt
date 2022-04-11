@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Views/description.dart';
 import 'menu.dart';
 import '../Components/constants.dart';
-import '/Presentation/main.dart';
+import '../../main.dart';
 
 class main_menu extends StatelessWidget {
   @override

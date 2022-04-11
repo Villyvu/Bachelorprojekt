@@ -8,7 +8,7 @@
             "name": "Learning2",
             "request": "launch",
             "type": "dart",
-            "program": "lib/Presentation/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "Learning2 (profile mode)",

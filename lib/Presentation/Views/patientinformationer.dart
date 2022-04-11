@@ -60,7 +60,7 @@ class Patientinformationer extends StatelessWidget {
                 const ListTile(
                   title: Text("Sengeafsnit"),
                   textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.calendar_month_outlined,
+                  leading: Icon(Icons.calendar_view_month_outlined,
                       color: Constants.kWhiteColor),
                 ),
                 ListTile(

@@ -1,4 +1,4 @@
-package com.example.learning2
+package com.example.eventlog
 
 import io.flutter.embedding.android.FlutterActivity
 
