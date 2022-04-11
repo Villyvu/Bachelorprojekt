@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
 import 'package:flutter/services.dart';
-import 'timeline.dart';
 import 'haendelse.dart';
 
 class processes extends StatelessWidget {
@@ -34,6 +33,7 @@ class processes extends StatelessWidget {
               elevation: 5,
               shape: Border(top: BorderSide(color: Colors.grey.shade300, width: 10)),
               child: ListTile(
+                contentPadding: EdgeInsets.fromLTRB(16, 10, 16, 0),
                 title: Text('FAM', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
                 subtitle: Text('24/03/2022'),
                 trailing: Icon(Icons.arrow_forward_ios),
@@ -47,7 +47,6 @@ class processes extends StatelessWidget {
                 },
               ),
             ),
-
           ],
         ),
       ),
