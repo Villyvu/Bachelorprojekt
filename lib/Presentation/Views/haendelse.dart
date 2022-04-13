@@ -41,7 +41,7 @@ class _TimeLineState extends State<TimeLine> {
     Constants.kBlueColor,
     Constants.kGreenColor,
     Constants.kRedColor,
-    Constants.kYellowColor
+    Constants.kGreyColor,
   ];
 
   late List<TimelineCard> timeline;
@@ -69,7 +69,7 @@ class _TimeLineState extends State<TimeLine> {
                       Container(
                         //Stregen til venstre
                         width: 2,
-                        height: 66,
+                        height: 74,
                         color: index == 0
                             ? Colors.transparent
                             : Constants.kBlackColor,
@@ -78,10 +78,8 @@ class _TimeLineState extends State<TimeLine> {
                         margin: EdgeInsets.only(
                             left: 10, right: 10), //Placering af streg
                         padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: listOfColors[random.nextInt(4)],
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Icon(timeline[index].icon, color: Colors.white),
+
+                        child: Text(timeline[index].sideTime),
                       ),
                       Container(
                         width: 2,
@@ -94,27 +92,25 @@ class _TimeLineState extends State<TimeLine> {
                   ),
                   Expanded(
                       child: Container(
-                    margin: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border(
+                        margin: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border(
                             top: BorderSide(
-                                width: 4, color: Constants.kRedColor)),
+                                width: 4, color: Constants.kBlueColor)),
                         boxShadow: [
                           BoxShadow(blurRadius: 10, color: Colors.black26)
                         ]),
-                    height: 130,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            timeline[index].time +
-                                " - " +
-                                timeline[index].title,
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                        height: 130,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                timeline[index].time + " - " + timeline[index].title,
+                                style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             timeline[index].desc,
@@ -138,42 +134,22 @@ class _TimeLineState extends State<TimeLine> {
         "Ankomst til Fælles Akutmodtagelse",
         "Kl. 20:43",
         "Tilskadekommende er blevet modtaget på FAM og tilses nu af en sygeplejerske",
-        Icons.local_hospital_outlined));
+        "20:"));
     timelineCard.add(TimelineCard(
         "Klinisk vurdering",
         "Kl. 21:10",
         "Tilskadekommende er blevet modtaget og tilset af en læge",
-        Icons.local_hotel_outlined));
+        "21:10"));
     timelineCard.add(TimelineCard(
         "Lab-pakke",
         "Kl. 21:44",
         "Tilskadekommende har fået en blodprøve",
-        Icons.local_hospital_outlined));
+        "2111:44"));
     timelineCard.add(TimelineCard(
         "EKG",
         "Kl. 22:02",
         "Tilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normal",
-        Icons.local_hospital_outlined));
-    timelineCard.add(TimelineCard(
-        "Diverse scanninger",
-        "Kl. 22:29",
-        "Tilskadekommende har været igennem en røntgenscanning og MR-scanning",
-        Icons.local_hospital_outlined));
-    timelineCard.add(TimelineCard(
-        "Covid-screening",
-        "Kl. 22:51",
-        "Tilskadekommende testet for om vedkommende skulle være smittet med Covid-19",
-        Icons.local_hospital_outlined));
-    timelineCard.add(TimelineCard(
-        "4-timers plan",
-        "Kl. 23:16",
-        "Tilskadekommende informeres om status for behandlingen og om at det akutte ophold",
-        Icons.local_hospital_outlined));
-    timelineCard.add(TimelineCard(
-        "Udskrivelse",
-        "Kl. 00:13",
-        "Tilskadekommende vurderes rask nok til at blive udskrevet",
-        Icons.local_hospital_outlined));
+        "22:02"));
 
     return timelineCard;
   }

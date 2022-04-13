@@ -4,7 +4,7 @@ class TimelineCard {
   String title;
   String time;
   String desc;
-  IconData icon;
+  String sideTime;
 
-  TimelineCard(this.title, this.time, this.desc, this.icon);
+  TimelineCard(this.title, this.time, this.desc, this.sideTime);
 }

@@ -25,8 +25,7 @@ class main_menu extends StatelessWidget {
           bottomNavigationBar: BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person_outline), label: 'Log på'),
+                BottomNavigationBarItem(icon: Icon(Icons.person_outline), label: 'Log på'),
               ],
               onTap: (int) {
                 Navigator.push(
