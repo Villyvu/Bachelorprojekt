@@ -1,8 +1,11 @@
+import 'package:eventlog/Data/Db/DatabaseHandlerSqlite.dart';
 import 'package:eventlog/Data/Event.dart';
 import 'package:eventlog/Data/Proces.dart';
 
+import 'Db/IDatabaseHandler.dart';
+
 void main() {
-  Event event = Event(DateTime.now(), 'Udskrivelse', '123');
+  /*Event event = Event(DateTime.now(), 'Udskrivelse', '123');
   Event event1 = Event(DateTime.parse("2022-04-01"), 'Blodprøve', '123');
   Event event2 = Event(DateTime.parse("2022-04-02"), 'Corona Screening', '123');
   List<Event> events = [];
@@ -29,4 +32,5 @@ void main() {
         "  Start på hændelse: " +
         event.getDateTime.toString());
   }
+  */
 }

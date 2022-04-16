@@ -8,18 +8,45 @@ import 'processes.dart';
 TextStyle style = TextStyle(color: Colors.white);
 
 class specificevent extends StatelessWidget {
-
   final List<Data> listOfEvents = [
-  Data(time: "Kl. 20:43", name: "Ambulance Udrykning", desc: "Ambulancen er fremme ved stedet og tilser den tilskadekommende"),
-  Data(time: "Kl. 21:10", name: "Ankommer til FAM", desc: "Ambulancen er fremme ved FAM med tilskadekommende"),
-  Data(time: "Kl. 21:22", name: "Tilskadekommende tilses", desc: "Tilskadekommende er blevet tjekket ind på en stue og tilses nu af sygepersonalet"),
-  Data(time: "Kl. 21:39", name: "Røntgenscanning", desc: "Tilskadekommende er under røntgenscanning for at bedømme skadens omfang"),
-  Data(time: "Kl. 22:15", name: "Observation", desc: "Tilskadekommende ligger nu på egen stue til observation"),
-  Data(time: "Kl. 00:54", name: "Underretning om skade", desc: "Tilskadekommende underrettes af læge Jesper Larsen om skaderne"),
-  Data(time: "Kl. 01:16", name: "Udskrivelse", desc: "Tilskadekommende er vurderet rask nok, og udskrives derfor"),
+    Data(
+        time: "Kl. 20:43",
+        name: "Ambulance Udrykning",
+        desc: "Ambulancen er fremme ved stedet og tilser den tilskadekommende"),
+    Data(
+        time: "Kl. 21:10",
+        name: "Ankommer til FAM",
+        desc: "Ambulancen er fremme ved FAM med tilskadekommende"),
+    Data(
+        time: "Kl. 21:22",
+        name: "Tilskadekommende tilses",
+        desc:
+            "Tilskadekommende er blevet tjekket ind på en stue og tilses nu af sygepersonalet"),
+    Data(
+        time: "Kl. 21:39",
+        name: "Røntgenscanning",
+        desc:
+            "Tilskadekommende er under røntgenscanning for at bedømme skadens omfang"),
+    Data(
+        time: "Kl. 22:15",
+        name: "Observation",
+        desc: "Tilskadekommende ligger nu på egen stue til observation"),
+    Data(
+        time: "Kl. 00:54",
+        name: "Underretning om skade",
+        desc: "Tilskadekommende underrettes af læge Jesper Larsen om skaderne"),
+    Data(
+        time: "Kl. 01:16",
+        name: "Udskrivelse",
+        desc: "Tilskadekommende er vurderet rask nok, og udskrives derfor"),
   ];
 
-  final List<Color> listOfColors = [Constants.kBlueColor,Constants.kGreenColor,Constants.kRedColor,Constants.kYellowColor];
+  final List<Color> listOfColors = [
+    Constants.kBlueColor,
+    Constants.kGreenColor,
+    Constants.kRedColor,
+    Constants.kYellowColor
+  ];
 
   @override
   Widget build(BuildContext context) {
