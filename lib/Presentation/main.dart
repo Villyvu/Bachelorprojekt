@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Palette.kTrueBlue,
         textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
       ),
-      home: main_menu(),
+      home: Main_menu(),
     );
   }
 }

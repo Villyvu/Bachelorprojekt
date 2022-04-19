@@ -53,7 +53,6 @@ class _TimeLineState extends State<TimeLine> {
     timeline = _getCards();
   }
 
-  Random random = new Random();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +68,7 @@ class _TimeLineState extends State<TimeLine> {
                       Container(
                         //Stregen til venstre
                         width: 2,
-                        height: 74,
+                        height: 50,
                         color: index == 0
                             ? Colors.transparent
                             : Constants.kBlackColor,
@@ -103,18 +102,17 @@ class _TimeLineState extends State<TimeLine> {
                         ]),
                         height: 130,
                         child: Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(16.0),     //Selve teksten i boksen
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
                                 timeline[index].time + " - " + timeline[index].title,
-                                style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
+                                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            timeline[index].desc,
-                            style: TextStyle(fontSize: 15),
+                              Text(timeline[index].desc, style: TextStyle(fontSize: 15),
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
                           )
                         ],
                       ),
@@ -143,12 +141,12 @@ class _TimeLineState extends State<TimeLine> {
     timelineCard.add(TimelineCard(
         "Lab-pakke",
         "Kl. 21:44",
-        "Tilskadekommende har fået en blodprøve",
+        "Tilskadekommende har fået taget en blodprøve",
         "2111:44"));
     timelineCard.add(TimelineCard(
         "EKG",
         "Kl. 22:02",
-        "Tilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normal",
+        "Tilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normalTilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normal",
         "22:02"));
 
     return timelineCard;

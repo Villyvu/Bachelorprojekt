@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Constants {
-  static const kBlueColor = Color(0xFF0091CF);
+  static const kBlueColor = Color(0xFF0192CE);
   static const kGreenColor = Colors.green;
   static const kRedColor = Colors.redAccent;
   static const kBlackColor = Colors.black;

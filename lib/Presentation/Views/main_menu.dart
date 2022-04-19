@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'menu.dart';
 import '../Components/constants.dart';
+import 'description.dart';
 
-class main_menu extends StatelessWidget {
+class Main_menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
