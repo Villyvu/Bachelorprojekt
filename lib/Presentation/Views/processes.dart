@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
 import 'package:flutter/services.dart';
-import 'haendelse.dart';
+import 'event.dart';
 import 'package:eventlog/Presentation/Components/processCard.dart';
 
 class Processes extends StatelessWidget {
@@ -28,12 +28,8 @@ class Processes extends StatelessWidget {
               ),
               onPressed: () => Navigator.pop(context, false)),
         ),
-        body: Column(
-          children: <Widget> [
-            processCard(),
-            processCard(),
-            processCard(),
-          ],
+        body: Center(
+          child: ProcessCard(),
         ),
       ),
     );

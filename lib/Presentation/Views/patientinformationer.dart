@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'processes.dart';
 import '../Components/constants.dart';
-import '../Components/menuListTile.dart';
+import '../Components/menuListData.dart';
 
 class Patientinformationer extends StatelessWidget {
 

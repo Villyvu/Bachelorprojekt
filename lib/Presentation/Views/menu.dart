@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'patientinformationer.dart';
 import '../Components/constants.dart';
-import 'description.dart';
-import '../Components/menuListTile.dart';
-import 'processes.dart';
+import '../Components/menuListData.dart';
 
 class Menu extends StatelessWidget {
 
