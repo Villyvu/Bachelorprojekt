@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-import 'package:eventlog/Presentation/Components/constants.dart';
-
-class description extends StatelessWidget {
-=======
 import 'package:eventlog/Data/Db/DatabaseHandler.dart';
 import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:eventlog/Data/Event.dart';
 import 'package:eventlog/Data/EventType.dart';
-import 'package:eventlog/Domain/EventDescrptionController.dart';
-import 'package:flutter/material.dart';
+import 'package:eventlog/Domain/EventDescriptionController.dart';
+import 'package:eventlog/Domain/IEventDescriptionController.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
+import 'package:flutter/material.dart';
 
 class description extends StatefulWidget {
   int eventType_id;
@@ -23,7 +18,7 @@ class description extends StatefulWidget {
 
 class _descriptionState extends State<description> {
   late var dataFuture;
-  late EventDescrptionController eventDescrptionController;
+  late IEventDescrptionController eventDescrptionController;
   @override
   void initState() {
     super.initState();
@@ -36,39 +31,10 @@ class _descriptionState extends State<description> {
     return await eventDescrptionController.getTypeOfEvent(widget.eventType_id);
   }
 
->>>>>>> backendBranch
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-<<<<<<< HEAD
-        title: Text('Dine forløb'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(22.0),
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: RichText(
-            text: const TextSpan(
-                text: "01:30 \n",
-                style: TextStyle(
-                  color: Constants.kBlueColor,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                ),
-                children: [
-                  TextSpan(
-                      text:
-                          "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu. Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu",
-                      style: TextStyle(
-                        color: Constants.kBlackColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.normal,
-                      ))
-                ]),
-          ),
-        ),
-=======
         title: FutureBuilder(
           future: dataFuture,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -118,7 +84,6 @@ class _descriptionState extends State<description> {
             );
           }
         },
->>>>>>> backendBranch
       ),
     );
   }

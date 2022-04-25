@@ -1,6 +1,6 @@
 import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:eventlog/Data/EventType.dart';
-import 'package:eventlog/Domain/IEventDescrptionController.dart';
+import 'package:eventlog/Domain/IEventDescriptionController.dart';
 
 class EventDescrptionController implements IEventDescrptionController {
   late IDatabaseHandler databaseHandler;
