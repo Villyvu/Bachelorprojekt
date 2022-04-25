@@ -1,5 +1,6 @@
 import 'package:eventlog/Data/Db/DatabaseHandler.dart';
 import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
+import 'package:eventlog/Presentation/Components/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './Presentation/Components/constants.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Constants.kBlueColor,
+        primarySwatch: Palette.kTrueBlue,
         textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
       ),
       home: main_menu(),
