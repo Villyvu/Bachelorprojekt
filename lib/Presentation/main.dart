@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './Components/constants.dart';
 import 'Views/main_menu.dart';
+import './Components/palette.dart';
 
 //TO-DO:
-//Extract første view fra main-klassen (MyHomePage metoden)
 //Extract cards fra de klasse de bliver brugt (se JustRandom)
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Constants.kBlueColor,
+        primarySwatch: Palette.kTrueBlue,
         textTheme: GoogleFonts.robotoTextTheme(Theme.of(context).textTheme),
       ),
       home: main_menu(),

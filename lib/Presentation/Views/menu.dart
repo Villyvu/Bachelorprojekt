@@ -6,7 +6,7 @@ import 'patientinformationer.dart';
 import '../Components/constants.dart';
 import 'description.dart';
 
-class menu extends StatelessWidget {
+class Menu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
