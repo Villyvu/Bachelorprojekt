@@ -3,27 +3,18 @@ import 'dart:convert';
 // ignore_for_file: unused_field
 
 class Event {
-  DateTime _dateTime;
-  String _typeOfEvent;
-  String _description;
+  int proces_id;
+  String _dateTime;
+  int _typeOfEvent_id;
 
-  Event(this._dateTime, this._typeOfEvent, this._description);
+  Event(this.proces_id, this._dateTime, this._typeOfEvent_id);
 
   get getDateTime => this._dateTime;
 
-  set setDateTime(DateTime dateTime) {
-    this._dateTime = dateTime;
-  }
+  int get getTypeOfEvent => this._typeOfEvent_id;
 
-  String get getTypeOfEvent => this._typeOfEvent;
-
-  set setTypeOfEvent(String value) {
-    this._typeOfEvent = value;
-  }
-
-  get getDescription => this._description;
-
-  set setDescription(String value) {
-    this._description = value;
-  }
+  Event.fromMap(Map<String, dynamic> map)
+      : proces_id = map['proces_id'],
+        _dateTime = map['_dateTime'],
+        _typeOfEvent_id = map['_typeOfEvent_id'];
 }

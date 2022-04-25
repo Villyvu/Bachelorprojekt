@@ -47,14 +47,7 @@ class menu extends StatelessWidget {
                   textColor: Constants.kWhiteColor,
                   leading: Icon(Icons.person_search_outlined,
                       color: Constants.kWhiteColor),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => description(),
-                      ),
-                    );
-                  },
+                  onTap: () {},
                 ),
                 ListTile(
                   title: Text("Patientinformationer (alle)"),

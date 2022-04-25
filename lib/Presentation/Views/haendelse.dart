@@ -1,9 +1,42 @@
-import 'package:flutter/material.dart';
-import '../Components/constants.dart';
 import 'dart:math';
-import '../Components/TimelineCard.dart';
 
-class Haendelse extends StatelessWidget {
+import 'package:eventlog/Data/Db/DatabaseHandler.dart';
+import 'package:eventlog/Data/Event.dart';
+import 'package:eventlog/Domain/ITimelineController.dart';
+import 'package:eventlog/Domain/TimelineController.dart';
+import 'package:eventlog/Presentation/Views/description.dart';
+import 'package:flutter/material.dart';
+
+import '../Components/TimelineCard.dart';
+import '../Components/constants.dart';
+
+class Haendelse extends StatefulWidget {
+  int proces_id;
+
+  Haendelse({
+    Key? key,
+    required this.proces_id,
+  }) : super(key: key);
+
+  @override
+  State<Haendelse> createState() => _HaendelseState();
+}
+
+class _HaendelseState extends State<Haendelse> {
+  late var dataFuture;
+  late ITimelineController timelineController;
+
+  @override
+  void initState() {
+    super.initState();
+    timelineController = TimelineController(DatabaseHandler.getInstance());
+    dataFuture = _getData();
+  }
+
+  Future<List<Event>> _getData() async {
+    return await timelineController.getEvents(widget.proces_id);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,8 +45,65 @@ class Haendelse extends StatelessWidget {
         appBar: AppBar(
           title: Text('X. Akutforløb'),
         ),
-        body: Center(
-          child: TimeLine(),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              _getData();
+            });
+          },
+        ),
+        body: FutureBuilder(
+          future: dataFuture,
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            print(dataFuture);
+            print(snapshot.connectionState);
+            print(snapshot.hasError);
+            print("Error: " + snapshot.error.toString());
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return Center(
+                child: ListView.builder(
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card(
+                        child: ListTile(
+                      title:
+                          Text(snapshot.data[index].getTypeOfEvent.toString()),
+                      trailing: Constants.kArrowRight,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => description(
+                              eventType_id: snapshot.data[index].getTypeOfEvent,
+                            ),
+                          ),
+                        );
+                      },
+                    ));
+                  },
+                ),
+              );
+              /*
+              print("Hændelse has data: " + snapshot.hasData.toString());
+              if (snapshot.hasData) {
+                print(snapshot.data.length);
+                return Center(
+                  child: Text("123"),
+                );
+              } else {
+                return Center(
+                  child: Text(snapshot.hasData.toString()),
+                );
+              }*/
+
+            } else {
+              return Text("State: ${snapshot.connectionState}");
+            }
+          },
         ),
       ),
     );

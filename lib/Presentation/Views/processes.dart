@@ -1,5 +1,7 @@
 import 'package:eventlog/Data/Db/DatabaseHandler.dart';
 import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
+import 'package:eventlog/Domain/IProcessesController.dart';
+import 'package:eventlog/Domain/ProcessesController.dart';
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
 import '../../Data/Proces.dart';
@@ -16,15 +18,12 @@ class processes extends StatefulWidget {
 }
 
 class _processesState extends State<processes> {
-  late IDatabaseHandler databaseHandler;
+  late IProcessesController processesController;
 
   @override
   void initState() {
-    this.databaseHandler = DatabaseHandler();
-    databaseHandler.deleteTable();
-    databaseHandler.createTables();
-    databaseHandler.fillTable();
     super.initState();
+    processesController = ProcessesController(DatabaseHandler.getInstance());
   }
 
   @override
@@ -34,7 +33,7 @@ class _processesState extends State<processes> {
         title: Text('Dine forløb'),
       ),
       body: FutureBuilder(
-        future: databaseHandler.readProcesses(123456789),
+        future: processesController.getProcesses(123456789),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           var data = snapshot.data;
           print(snapshot.connectionState);
@@ -44,7 +43,7 @@ class _processesState extends State<processes> {
               return Center(
                   child: RefreshIndicator(
                 onRefresh: () async {
-                  var newData = databaseHandler.readProcesses(123456789);
+                  var newData = processesController.getProcesses(123456789);
                   setState(
                     () {
                       data = newData;
@@ -57,16 +56,17 @@ class _processesState extends State<processes> {
                     print(snapshot.data.length);
                     return Card(
                         child: ListTile(
-                      title: Text(data[index].date),
+                      title: Text(data[index].caretaker),
                       trailing: Constants.kArrowRight,
                       onTap: () {
-                        databaseHandler.insert();
-                        /*Navigator.push(
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Haendelse(),
+                            builder: (context) => Haendelse(
+                              proces_id: data[index].proces_id,
+                            ),
                           ),
-                        );*/
+                        );
                       },
                     ));
                   },

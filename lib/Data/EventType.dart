@@ -11,4 +11,8 @@ class EventType {
   String getDescription() {
     return this._description;
   }
+
+  EventType.fromMap(Map<String, dynamic> map)
+      : _titel = map['_titel'],
+        _description = map['_description'];
 }
