@@ -1,3 +1,6 @@
+import 'package:eventlog/Data/Db/DatabaseHandler.dart';
+import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
+import 'package:eventlog/Presentation/Views/haendelse.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'processes.dart';
@@ -60,7 +63,7 @@ class Patientinformationer extends StatelessWidget {
                 const ListTile(
                   title: Text("Sengeafsnit"),
                   textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.calendar_month_outlined,
+                  leading: Icon(Icons.calendar_view_month_outlined,
                       color: Constants.kWhiteColor),
                 ),
                 ListTile(

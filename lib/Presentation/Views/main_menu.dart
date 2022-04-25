@@ -1,9 +1,11 @@
+import 'package:eventlog/Data/Db/DatabaseHandler.dart';
+import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Views/description.dart';
 import 'menu.dart';
 import '../Components/constants.dart';
-import '/Presentation/main.dart';
+import '../../main.dart';
 
 class main_menu extends StatelessWidget {
   @override
@@ -92,20 +94,12 @@ class main_menu extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), label: 'Log på'),
-          ],
-          onTap: (int) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: ((context) => description()),
-              ),
-            );
-          }),
+      bottomNavigationBar:
+          BottomNavigationBar(items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline), label: 'Log på'),
+      ], onTap: (int) {}),
     );
   }
 }

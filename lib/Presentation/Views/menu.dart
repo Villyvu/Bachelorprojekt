@@ -1,3 +1,5 @@
+import 'package:eventlog/Data/Db/DatabaseHandler.dart';
+import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'patientinformationer.dart';
@@ -45,14 +47,7 @@ class menu extends StatelessWidget {
                   textColor: Constants.kWhiteColor,
                   leading: Icon(Icons.person_search_outlined,
                       color: Constants.kWhiteColor),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => description(),
-                      ),
-                    );
-                  },
+                  onTap: () {},
                 ),
                 ListTile(
                   title: Text("Patientinformationer (alle)"),
@@ -77,7 +72,7 @@ class menu extends StatelessWidget {
                 const ListTile(
                   title: Text("Mine aftaler"),
                   textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.calendar_month_outlined,
+                  leading: Icon(Icons.calendar_view_month_outlined,
                       color: Constants.kWhiteColor),
                 ),
                 const ListTile(
