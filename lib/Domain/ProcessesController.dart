@@ -7,6 +7,8 @@ class ProcessesController implements IProcessesController {
 
   ProcessesController(IDatabaseHandler instance) {
     databaseHandler = instance;
+    instance.createTables();
+    instance.fillTable();
   }
 
   @override
@@ -16,10 +18,10 @@ class ProcessesController implements IProcessesController {
 
   @override
   List<Proces> sortProcesses(List<Proces> list) {
-    var tempList = list;
+    List<Proces> tempList = list;
     tempList.sort(
       (a, b) {
-        return a.date.compareTo(b.date);
+        return DateTime.parse(b.date).compareTo(DateTime.parse(a.date));
       },
     );
     return tempList;

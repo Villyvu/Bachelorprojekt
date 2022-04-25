@@ -23,7 +23,6 @@ class DatabaseHandler implements IDatabaseHandler {
   Future<Database> get database async {
     if (_database != null) return _database;
     // lazily instantiate the db the first time it is accessed
-    _database = await initDatabase();
     return _database;
   }
 
@@ -57,20 +56,22 @@ class DatabaseHandler implements IDatabaseHandler {
 
     final Database db = await initDatabase();
 
-    //db.execute(procesTable);
+    db.execute(procesTable);
     db.execute(eventTypeTable);
-    //db.execute(eventTable);
+    db.execute(eventTable);
+
+    print("Tables created");
   }
 
   @override
   void fillTable() async {
     final Database db = await initDatabase();
 
-    /*db.rawInsert(
+    db.rawInsert(
         'INSERT INTO proces(date, caretaker, cpr) VALUES(datetime("now"), "yusaf", 0123456789)');
     db.rawInsert(
         'INSERT INTO proces(date, caretaker, cpr) VALUES(datetime("now"), "kalb", 0123456789)');
-    */
+
     db.rawInsert('INSERT INTO eventType(_titel, _description) VALUES(?,?)',
         ['Modtagelse', 'yusaf er tyk']);
 
@@ -80,6 +81,12 @@ class DatabaseHandler implements IDatabaseHandler {
     db.rawInsert(
         'INSERT INTO event(proces_id, _dateTime, _typeOfEvent_id) VALUES(?, ?, ?)',
         [15, '123', 1]);
+
+    db.rawInsert(
+        'INSERT INTO event(proces_id, _dateTime, _typeOfEvent_id) VALUES(?, ?, ?)',
+        [1, '123', 1]);
+
+    print("Data added");
   }
 
   @override

@@ -7,18 +7,19 @@ import 'package:eventlog/Domain/IEventDescriptionController.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
 import 'package:flutter/material.dart';
 
-class description extends StatefulWidget {
+class Description extends StatefulWidget {
   int eventType_id;
 
-  description({Key? key, required this.eventType_id}) : super(key: key);
+  Description({Key? key, required this.eventType_id}) : super(key: key);
 
   @override
-  State<description> createState() => _descriptionState();
+  State<Description> createState() => _DescriptionState();
 }
 
-class _descriptionState extends State<description> {
+class _DescriptionState extends State<Description> {
   late var dataFuture;
   late IEventDescrptionController eventDescrptionController;
+
   @override
   void initState() {
     super.initState();
@@ -33,58 +34,48 @@ class _descriptionState extends State<description> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: FutureBuilder(
-          future: dataFuture,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.done &&
-                snapshot.hasData) {
-              return Text(snapshot.data[0].getTitel());
-            } else {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ),
-      body: FutureBuilder(
-        future: dataFuture,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.connectionState == ConnectionState.done &&
-              snapshot.hasData) {
-            return Padding(
-              padding: const EdgeInsets.all(22.0),
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: RichText(
-                  text: TextSpan(
-                      text: "01:30 \n",
-                      style: TextStyle(
-                        color: Constants.kBlueColor,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      children: [
-                        TextSpan(
-                            text: snapshot.data[0].getDescription(),
-                            style: TextStyle(
-                              color: Constants.kBlackColor,
-                              fontSize: 18,
-                              fontWeight: FontWeight.normal,
-                            ))
-                      ]),
-                ),
+    return FutureBuilder(
+      future: dataFuture,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.connectionState == ConnectionState.done &&
+            snapshot.hasData) {
+          return Scaffold(
+              appBar: AppBar(
+                title: Text(snapshot.data[0].titel),
               ),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
+              body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Expanded(
+                        child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(time,
+                              style: TextStyle(
+                                  fontSize: 30, color: Constants.kBlueColor)),
+                          Text(snapshot.data[0].description,
+                              style: TextStyle(fontSize: 18))
+                        ],
+                      ),
+                    ))
+                  ],
+                ),
+              ));
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }
+
+String time = "01:30";
+String desc =
+    "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu. Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu"
+    "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu. Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu"
+    "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu. Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Nam condimentum tempus diam, ultricies sollicitudin erat facilisis eget. Vestibulum rhoncus dui vel eros laoreet consectetur. Vivamus eget elementum ligula, vitae pharetra quam. Nullam at ligula sed metu";

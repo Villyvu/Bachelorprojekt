@@ -1,9 +1,5 @@
 buildscript {
-<<<<<<< HEAD
-    ext.kotlin_version = '1.3.50'
-=======
     ext.kotlin_version = '1.6.10'
->>>>>>> backendBranch
     repositories {
         google()
         mavenCentral()

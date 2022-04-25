@@ -4,9 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'patientinformationer.dart';
 import '../Components/constants.dart';
-import 'description.dart';
+import '../Components/menuListData.dart';
 
 class Menu extends StatelessWidget {
+  List<MenuListTile> menuItems = [
+    MenuListTile(text: 'Tidsbestilling', icon: Icons.note_alt_outlined),
+    MenuListTile(text: 'Værd at vide', icon: Icons.person_search_outlined),
+    MenuListTile(
+        text: 'Patientinformationer', icon: Icons.personal_injury_outlined),
+    MenuListTile(text: 'Ris og Ros', icon: Icons.sticky_note_2_outlined),
+    MenuListTile(text: 'Mine aftaler', icon: Icons.calendar_month_outlined),
+    MenuListTile(text: 'Meddelelser', icon: Icons.chat_outlined),
+    MenuListTile(text: 'Kontakt', icon: Icons.local_phone_outlined)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,63 +43,27 @@ class Menu extends StatelessWidget {
               onPressed: () => Navigator.pop(context, false)),
         ),
         body: Center(
-          child: ListView(
-            children: ListTile.divideTiles(
-              context: context,
-              tiles: [
-                const ListTile(
-                  title: Text("Tidsbestilling"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.note_alt_outlined,
-                      color: Constants.kWhiteColor),
+          child: ListView.builder(
+            itemCount: menuItems.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(menuItems[index].text),
+                textColor: Constants.kWhiteColor,
+                leading: Icon(
+                  menuItems[index].icon,
+                  color: Constants.kWhiteColor,
+                  size: 30,
                 ),
-                ListTile(
-                  title: Text("Værd at vide"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.person_search_outlined,
-                      color: Constants.kWhiteColor),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: Text("Patientinformationer (alle)"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.personal_injury_outlined,
-                      color: Constants.kWhiteColor),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Patientinformationer(),
-                      ),
-                    );
-                  },
-                ),
-                const ListTile(
-                  title: Text("Ris og Ros"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.sticky_note_2_outlined,
-                      color: Constants.kWhiteColor),
-                ),
-                const ListTile(
-                  title: Text("Mine aftaler"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.calendar_view_month_outlined,
-                      color: Constants.kWhiteColor),
-                ),
-                const ListTile(
-                  title: Text("Meddelelser"),
-                  textColor: Constants.kWhiteColor,
-                  leading:
-                      Icon(Icons.chat_outlined, color: Constants.kWhiteColor),
-                ),
-                const ListTile(
-                  title: Text("Kontakt"),
-                  textColor: Constants.kWhiteColor,
-                  leading: Icon(Icons.local_phone_outlined,
-                      color: Constants.kWhiteColor),
-                ),
-              ],
-            ).toList(),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Patientinformationer(),
+                    ),
+                  );
+                },
+              );
+            },
           ),
         ),
       ),
