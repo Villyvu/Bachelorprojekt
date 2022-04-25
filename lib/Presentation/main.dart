@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'Views/main_menu.dart';
 import './Components/palette.dart';
 
-//TO-DO:
-//Extract cards fra de klasse de bliver brugt (se JustRandom)
 
 void main() {
   runApp(MyApp());
