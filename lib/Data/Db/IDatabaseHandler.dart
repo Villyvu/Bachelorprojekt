@@ -1,4 +1,3 @@
-import 'package:eventlog/Data/EventType.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../Event.dart';
@@ -13,5 +12,5 @@ abstract class IDatabaseHandler {
 
   Future<List<Proces>> readProcesses(int cpr);
   Future<List<Event>> readEvents(int procesID);
-  Future<List<EventType>> readEventType(int eventTypeID);
+  Future<List<Event>> readAllEvents(int proces_id);
 }

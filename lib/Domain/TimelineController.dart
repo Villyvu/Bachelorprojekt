@@ -12,7 +12,7 @@ class TimelineController implements ITimelineController {
 
   @override
   Future<List<Event>> getEvents(int proces_id) {
-    return databaseHandler.readEvents(proces_id);
+    return databaseHandler.readAllEvents(proces_id);
   }
 
   @override
@@ -20,7 +20,7 @@ class TimelineController implements ITimelineController {
     var tempList = list;
     tempList.sort(
       (a, b) {
-        return a.dateTime.compareTo(b.dateTime);
+        return DateTime.parse(a.dateTime).compareTo(DateTime.parse(b.dateTime));
       },
     );
     return tempList;

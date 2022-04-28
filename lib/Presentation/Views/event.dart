@@ -3,6 +3,7 @@ import 'package:eventlog/Domain/ITimelineController.dart';
 import 'package:eventlog/Domain/TimelineController.dart';
 import 'package:flutter/material.dart';
 import 'package:eventlog/Data/Event.dart';
+import 'package:intl/intl.dart';
 import '../Components/constants.dart';
 import '../Components/timelineData.dart';
 import 'description.dart';
@@ -68,6 +69,7 @@ class _TimeLineState extends State<TimeLine> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
+          dataFuture = timelineController.sortEvents(snapshot.data);
           return Container(
             child: ListView.builder(
               itemCount: snapshot.data.length,
@@ -91,7 +93,9 @@ class _TimeLineState extends State<TimeLine> {
                           child: Container(
                             padding: EdgeInsets.all(0),
                             alignment: Alignment.center,
-                            child: Text(snapshot.data[index].dateTime,
+                            child: Text(
+                                DateFormat.Hm().format(DateTime.parse(
+                                    snapshot.data[index].dateTime)),
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                           ),
                         ),
@@ -119,27 +123,32 @@ class _TimeLineState extends State<TimeLine> {
                         child: ListTile(
                           contentPadding:
                               EdgeInsets.only(top: 20, left: 10, right: 20),
-                          title: Text(timeline[index].title,
+                          title: Text(snapshot.data[index].titel,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                               overflow: TextOverflow.ellipsis),
                           subtitle: Text(
-                            timeline[index].desc,
+                            snapshot.data[index].description,
                             style: TextStyle(fontSize: 15),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                           ),
                           trailing: Constants.kChevronRight,
-                          leading: Icon(timeline[index].icon,
-                              color: Constants.kBlueColor, size: 32),
+                          leading: Icon(
+                              IconData(snapshot.data[index].icon,
+                                  fontFamily: 'MaterialIcons'),
+                              color: Constants.kBlueColor,
+                              size: 32),
                           horizontalTitleGap: 0,
                           onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => Description(
-                                    eventType_id:
-                                        snapshot.data[index].typeOfEvent_id),
+                                    time: snapshot.data[index].dateTime,
+                                    description:
+                                        snapshot.data[index].description,
+                                    titel: snapshot.data[index].titel),
                               ),
                             );
                           },

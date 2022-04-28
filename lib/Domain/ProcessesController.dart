@@ -1,14 +1,13 @@
 import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:eventlog/Data/Proces.dart';
 import 'package:eventlog/Domain/IProcessesController.dart';
+import 'package:sqflite/sqflite.dart';
 
 class ProcessesController implements IProcessesController {
   late IDatabaseHandler databaseHandler;
 
   ProcessesController(IDatabaseHandler instance) {
     databaseHandler = instance;
-    instance.createTables();
-    instance.fillTable();
   }
 
   @override
