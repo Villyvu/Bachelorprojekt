@@ -8,6 +8,8 @@ class ProcessesController implements IProcessesController {
 
   ProcessesController(IDatabaseHandler instance) {
     databaseHandler = instance;
+    
+
   }
 
   @override

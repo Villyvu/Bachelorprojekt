@@ -39,8 +39,8 @@ class DatabaseHandler implements IDatabaseHandler {
     await Future.delayed(Duration(seconds: 3));
     final Database db = await initDatabase();
     db.rawDelete('DROP TABLE proces');
-    db.rawDelete('DROP TABLE eventType');
-    db.rawDelete('DROP TABLE event');
+    //db.rawDelete('DROP TABLE eventType');
+    //db.rawDelete('DROP TABLE event');
     print("tables deleted");
   }
 
@@ -68,9 +68,21 @@ class DatabaseHandler implements IDatabaseHandler {
 
     db.rawInsert(
         'INSERT INTO proces(date, caretaker, cpr) VALUES(datetime("now"), "John Doe", 0123456789)');
-
+    /*
     db.rawInsert(
         'INSERT INTO proces(date, caretaker, cpr) VALUES(datetime("now"), "John Doe", 0123456789)');
+    
+
+    db.rawInsert(
+        'INSERT INTO proces(date, caretaker, cpr) VALUES(?,?,?)', ['2022-06-28 16:05:00', "John Doe", 0123456789]);
+    
+    db.rawInsert(
+        'INSERT INTO proces(date, caretaker, cpr) VALUES(?,?,?)', ['2022-02-04 16:05:00', "John Doe", 0123456789]); 
+
+    db.rawInsert(
+        'INSERT INTO proces(date, caretaker, cpr) VALUES(?,?,?)', ['2022-03-18 16:05:00', "John Doe", 0123456789]);   
+    */
+    /*
 
     db.rawInsert(
         'INSERT INTO eventType(_titel, _description, _icon) VALUES(?,?,?)', [
@@ -146,6 +158,7 @@ class DatabaseHandler implements IDatabaseHandler {
         'INSERT INTO event(proces_id, _dateTime, _typeOfEvent_id) VALUES(?, ?, ?)',
         [1, '2022-04-28 18:05:00', 6]);
     print("Data added");
+    */
   }
 
   @override

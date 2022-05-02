@@ -27,7 +27,9 @@ class _ProcessCardState extends State<ProcessCard> {
   }
 
   Future<List<Proces>> _getData() async {
-    return await processesController.getProcesses(0123456789);
+    var list = await processesController.getProcesses(0123456789);
+    var sortedList = processesController.sortProcesses(list);
+    return sortedList;
   }
 
   @override
@@ -37,7 +39,6 @@ class _ProcessCardState extends State<ProcessCard> {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.done &&
             snapshot.hasData) {
-          processesController.sortProcesses(snapshot.data);
           return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) {
