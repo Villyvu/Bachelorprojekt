@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:eventlog/Data/Event.dart';
 import 'package:intl/intl.dart';
 import '../Components/constants.dart';
-import '../Components/timelineData.dart';
 import 'description.dart';
 
 class Haendelse extends StatelessWidget {
@@ -168,34 +167,4 @@ class _TimeLineState extends State<TimeLine> {
       },
     );
   }
-
-  List<TimelineData> timeline = [
-    TimelineData(
-        icon: Icons.pregnant_woman_outlined,
-        title: "Ankomst til Fællesmmm",
-        desc:
-            "Tilskadekommende er blevet modtaget på FAM og tilses nu af en sygeplejerske",
-        sideTime: "20:43"),
-    TimelineData(
-        icon: Icons.local_hospital,
-        title: "Klinisk vurdering",
-        desc: "Tilskadekommende er blevet modtaget og tilset af en læge",
-        sideTime: "21:10"),
-    TimelineData(
-        icon: Icons.ac_unit_outlined,
-        title: "Lab-pakke",
-        desc: "Tilskadekommende har fået taget en blodprøve",
-        sideTime: "21:44"),
-    TimelineData(
-        icon: Icons.timeline,
-        title: "EKG",
-        desc:
-            "Tilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normalTilskadekommende har fået foretaget et hjertekardiogram, for at se om hjerterytmen er normal",
-        sideTime: "22:02"),
-    TimelineData(
-        icon: Icons.print,
-        title: "Udskrivelse",
-        desc: "Tilskadekommende er vurderet rask og er nu blevet udskrevet",
-        sideTime: "00:01"),
-  ];
 }

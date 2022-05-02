@@ -2,10 +2,10 @@ import 'package:eventlog/Data/Db/DatabaseHandler.dart';
 import 'package:eventlog/Data/Proces.dart';
 import 'package:eventlog/Domain/IProcessesController.dart';
 import 'package:eventlog/Domain/ProcessesController.dart';
-import 'package:eventlog/Presentation/Components/processData.dart';
+
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Views/event.dart';
-import 'package:eventlog/Presentation/Components/processData.dart';
+
 import 'package:intl/intl.dart';
 
 class ProcessCard extends StatefulWidget {
@@ -29,13 +29,6 @@ class _ProcessCardState extends State<ProcessCard> {
   Future<List<Proces>> _getData() async {
     return await processesController.getProcesses(0123456789);
   }
-
-  List<ProcessData> processes = [
-    ProcessData(date: '12/03-2016'),
-    ProcessData(date: '02/06-2018'),
-    ProcessData(date: '21/04-2021'),
-    ProcessData(date: '17/11-2022')
-  ];
 
   @override
   Widget build(BuildContext context) {

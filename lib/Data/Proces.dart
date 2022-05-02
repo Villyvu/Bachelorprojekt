@@ -1,7 +1,6 @@
 import 'package:eventlog/Data/Event.dart';
-import 'package:eventlog/Data/IProces.dart';
 
-class Proces implements IProces {
+class Proces {
   String _caretaker;
   int _cpr;
   String _date;
