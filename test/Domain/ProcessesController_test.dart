@@ -3,36 +3,70 @@ import 'package:eventlog/Data/Proces.dart';
 import 'package:eventlog/Domain/ProcessesController.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+
+import 'ProcessesController_test.mocks.dart';
 
 @GenerateMocks([DatabaseHandler])
 void main() {
-  test(
-      'Given ProcessesController with a list of Processes, When sort is called Then the list is sorted.',
-      () async {
-    // Arrange
-    List<Proces> list = [];
-    final List<String> dates = [
-      '2022-05-28 10:05:00',
-      '2022-03-28 10:05:00',
-      '2022-09-28 10:05:00',
-      '2022-03-28 10:15:00'
-    ];
+  late DatabaseHandler databaseHandler;
+  late ProcessesController processesController;
+  group('ProcessesController', () {
+    setUp(() {
+      databaseHandler = MockDatabaseHandler();
+      processesController = ProcessesController(databaseHandler);
+    });
+    test(' getProcesses(int cpr) should return all processes based on cpr',
+        () async {
+      // Arrange
+      //ARRANGE
+      List<Proces> list = [];
 
-    final List<String> sortedDates = [
-      '2022-09-28 10:05:00',
-      '2022-05-28 10:05:00',
-      '2022-03-28 10:15:00',
-      '2022-03-28 10:05:00'
-    ];
+      final List<Proces> data = [
+        Proces(1, '2022-09-28 10:05:00', 'John Doe', 0123456789),
+        Proces(2, '2022-09-28 10:05:00', 'Jane Doe', 0123456789)
+      ];
+      when(databaseHandler.readProcesses(0123456789))
+          .thenAnswer((_) async => data);
 
-    for (var date in dates) {
-      list.add(Proces(1, date, 'Jane Doe', 0123456789));
-    }
-    // Act
-    list = processesController.sortProcesses(list);
-    // Assert
-    for (var i = 0; i < list.length; i++) {
-      expect(list[i].date, sortedDates[i]);
-    }
+      //ACT
+      list = await processesController.getProcesses(0123456789);
+
+      //ASSERT
+      for (var i = 0; i < list.length; i++) {
+        expect(list[i].proces_id, data[i].proces_id);
+        expect(list[i].date, data[i].date);
+        expect(list[i].caretaker, data[i].caretaker);
+        expect(list[i].cpr, data[i].cpr);
+      }
+      verify(databaseHandler.readProcesses(0123456789));
+    });
+
+    test(
+        'sortProcesses(list) should return a sorted listed descending order based on date',
+        () {
+      //ARRANGE
+      List<Proces> data = [
+        Proces(1, '2022-01-21 11:05:00', 'John Doe', 0123456789),
+        Proces(2, '2022-06-21 14:05:00', 'Jane Doe', 0123456789),
+        Proces(3, '2022-12-03 15:05:00', 'Annie Doe', 0123456789),
+        Proces(4, '2022-09-28 11:35:00', 'Yusaf Doe', 0123456789)
+      ];
+
+      List<Proces> sortedlist = [
+        Proces(3, '2022-12-03 15:05:00', 'Annie Doe', 0123456789),
+        Proces(4, '2022-09-28 11:35:00', 'Yusaf Doe', 0123456789),
+        Proces(2, '2022-06-21 14:05:00', 'Jane Doe', 0123456789),
+        Proces(1, '2022-01-21 11:05:00', 'John Doe', 0123456789)
+      ];
+
+      //ACT
+      data = processesController.sortProcesses(data);
+
+      //ASSERT
+      for (var i = 0; i < data.length; i++) {
+        expect(data[i].date, sortedlist[i].date);
+      }
+    });
   });
 }
