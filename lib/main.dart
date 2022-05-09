@@ -1,16 +1,17 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
 import 'package:eventlog/Presentation/Components/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import './Presentation/Components/constants.dart';
 import './Presentation/Views/main_menu.dart';
+import 'injection_contaner.dart' as di;
 
 //TO-DO:
 //Extract første view fra main-klassen (MyHomePage metoden)
 //Extract cards fra de klasse de bliver brugt (se JustRandom)
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(MyApp());
 }
 

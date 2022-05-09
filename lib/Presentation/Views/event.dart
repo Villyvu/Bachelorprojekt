@@ -1,9 +1,8 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
+import 'package:eventlog/Data/Models/Event.dart';
 import 'package:eventlog/Domain/ITimelineController.dart';
-import 'package:eventlog/Domain/TimelineController.dart';
 import 'package:flutter/material.dart';
-import 'package:eventlog/Data/Event.dart';
 import 'package:intl/intl.dart';
+import '../../injection_contaner.dart';
 import '../Components/constants.dart';
 import 'description.dart';
 
@@ -53,7 +52,7 @@ class _TimeLineState extends State<TimeLine> {
   @override
   void initState() {
     super.initState();
-    timelineController = TimelineController(DatabaseHandler.getInstance());
+    timelineController = sl<ITimelineController>();
     dataFuture = _getData();
   }
 

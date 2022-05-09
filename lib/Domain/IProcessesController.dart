@@ -1,4 +1,4 @@
-import 'package:eventlog/Data/Proces.dart';
+import '../Data/Models/Proces.dart';
 
 abstract class IProcessesController {
   Future<List<Proces>> getProcesses(int cpr);

@@ -1,6 +1,3 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
-import 'package:eventlog/Data/Event.dart';
 import 'package:eventlog/Presentation/Components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

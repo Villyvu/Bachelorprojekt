@@ -1,4 +1,4 @@
-import 'package:eventlog/Data/Proces.dart';
+import 'package:eventlog/Data/Models/Proces.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

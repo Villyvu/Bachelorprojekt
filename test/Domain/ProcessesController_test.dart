@@ -1,5 +1,5 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Proces.dart';
+import 'package:eventlog/Data/Models/Proces.dart';
+import 'package:eventlog/Data/repos/DatabaseHandler.dart';
 import 'package:eventlog/Domain/ProcessesController.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

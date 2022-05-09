@@ -1,5 +1,5 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Event.dart';
+import 'package:eventlog/Data/Models/Event.dart';
+import 'package:eventlog/Data/repos/DatabaseHandler.dart';
 import 'package:eventlog/Domain/TimelineController.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -13,10 +13,9 @@ void main() {
   late TimelineController timelineController;
 
   group('Timelinecontroller...', () {
-    setUp(() {
-      databaseHandler = MockDatabaseHandler();
-      timelineController = TimelineController(databaseHandler);
-    });
+    databaseHandler = MockDatabaseHandler();
+    timelineController = TimelineController(databaseHandler);
+    setUp(() {});
     test(
         ' readAllEvents(proces_id) returns a list of Events with a specific proces_id',
         () async {

@@ -1,12 +1,9 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Proces.dart';
+import 'package:eventlog/Data/Models/Proces.dart';
 import 'package:eventlog/Domain/IProcessesController.dart';
-import 'package:eventlog/Domain/ProcessesController.dart';
-
 import 'package:flutter/material.dart';
 import 'package:eventlog/Presentation/Views/event.dart';
-
 import 'package:intl/intl.dart';
+import '../../injection_contaner.dart';
 
 class ProcessCard extends StatefulWidget {
   ProcessCard({Key? key}) : super(key: key);
@@ -22,7 +19,7 @@ class _ProcessCardState extends State<ProcessCard> {
   @override
   void initState() {
     super.initState();
-    processesController = ProcessesController(DatabaseHandler.getInstance());
+    processesController = sl<IProcessesController>();
     dataFuture = _getData();
   }
 
@@ -51,7 +48,7 @@ class _ProcessCardState extends State<ProcessCard> {
                   contentPadding: EdgeInsets.fromLTRB(16, 16, 16, 0),
                   leading: Icon(Icons.calendar_month_outlined),
                   title: Text(
-                    'FAM' + snapshot.data[index].proces_id.toString(),
+                    'FAM',
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(DateFormat.yMMMd()

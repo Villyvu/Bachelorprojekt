@@ -1,5 +1,3 @@
-import 'package:eventlog/Data/Event.dart';
-
 class Proces {
   String _caretaker;
   int _cpr;

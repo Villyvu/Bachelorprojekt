@@ -1,5 +1,6 @@
-import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
-import 'package:eventlog/Data/Proces.dart';
+import 'package:eventlog/Data/Models/Proces.dart';
+import 'package:eventlog/Data/datasources/sql_Db.dart';
+import 'package:eventlog/Domain/IDatabaseHandler.dart';
 import 'package:eventlog/Domain/IProcessesController.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -8,8 +9,6 @@ class ProcessesController implements IProcessesController {
 
   ProcessesController(IDatabaseHandler instance) {
     databaseHandler = instance;
-    
-
   }
 
   @override

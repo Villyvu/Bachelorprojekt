@@ -1,7 +1,8 @@
-import 'package:eventlog/Data/Db/DatabaseHandler.dart';
-import 'package:eventlog/Data/Db/IDatabaseHandler.dart';
-import 'package:eventlog/Data/Event.dart';
+import 'package:eventlog/Domain/IDatabaseHandler.dart';
+
 import 'package:eventlog/Domain/ITimelineController.dart';
+
+import '../Data/Models/Event.dart';
 
 class TimelineController implements ITimelineController {
   late IDatabaseHandler databaseHandler;

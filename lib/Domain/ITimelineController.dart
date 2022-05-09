@@ -1,4 +1,4 @@
-import 'package:eventlog/Data/Event.dart';
+import '../Data/Models/Event.dart';
 
 abstract class ITimelineController {
   Future<List<Event>> getEvents(int proces_id);
